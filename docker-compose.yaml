@@ -1,0 +1,12 @@
+services:
+  selenium-scraper:
+    build: .
+    container_name: selenium-scraper
+    volumes:
+      - ./app:/usr/src/app  # Mounts the local 'app' directory to the container's '/usr/src/app' directory
+    ports:
+      - "4444:4444"  # Exposes Selenium Grid's default port
+    environment:
+      - DISPLAY=:99  # Set display environment if needed, especially for GUI-based testing
+    user: seluser
+    restart: unless-stopped
